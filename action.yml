@@ -13,6 +13,9 @@ inputs:
     required: true
     description: 'specify depcruise script (e.g. yarn depcruise)'
     default: yarn run -s depcruise
+  target-path:
+    required: false
+    description: 'specify depcruise'
 runs:
   using: composite
   steps:

@@ -25,6 +25,7 @@ export const getOptions = (): Promise<Options> => {
   const token = core.getInput('github_token', { required: true })
   const changedFiles = core.getInput('target_files', { required: false }).split(' ')
   const targetFiles = filterSupportedFiles(changedFiles)
+  const targetPath = core.getInput('target_path', { required: false })
   const focus = formatFocusOption(targetFiles)
   const cruiseScript = core.getInput('cruise_script', { required: true })
   const depcruiseConfigFilePath = getConfigFilePath()
@@ -36,6 +37,7 @@ export const getOptions = (): Promise<Options> => {
     issueNumber: pr?.number,
     sha: getSha(),
     targetFiles: targetFiles.join(' '),
+    targetPath,
     focus,
     depcruiseConfigFilePath,
     cruiseScript,
